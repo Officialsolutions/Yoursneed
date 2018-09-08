@@ -19,7 +19,7 @@ public partial class Auth_clientstructure : System.Web.UI.Page
     }
     public void bind()
     {
-        dt = objsql.GetTable("select i.Cregno,u.fname,u.mobile,u.joined from inststruc i Inner Join usersnew u on i.Cregno=u.regno ORDER BY i.cregno");
+        dt = objsql.GetTable("select distinct i.pregno,u.fname,u.mobile,u.joined from inststruc i Inner Join usersnew u on i.pregno=u.regno ");
         if (dt.Rows.Count > 0)
         {
             gvpins.DataSource = dt;

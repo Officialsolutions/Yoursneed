@@ -166,7 +166,7 @@
                     <i class="fa fa-bell"></i>
                 </div>--%>
                 <div class="contact-info">
-                     <span >[ <%--  <asp:Label ID="lblreward" runat="server" Text=""></asp:Label>--%>  ]</span>
+                     <span >[   <asp:Label ID="lblreward" runat="server" Text=""></asp:Label>  ]</span>
                     <h3>Reward Alert</h3>
                         <a href="Achiever.aspx" >Click All View</a>
                 </div>

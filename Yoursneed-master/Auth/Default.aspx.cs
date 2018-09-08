@@ -33,8 +33,9 @@ public partial class Auth_Default : System.Web.UI.Page
         lblunblock.Text= Common.Get(objsql.GetSingleValue("select count(*) from usersnew where active='1'"));
         lblused.Text= Common.Get(objsql.GetSingleValue("select count(*) from pins where status='y'"));
         lblunused.Text= Common.Get(objsql.GetSingleValue("select count(*) from pins where status='n'"));
-        lblstruct.Text= Common.Get(objsql.GetSingleValue("select count(*) from inststruc i Inner Join usersnew u on i.Cregno=u.regno"));
+        lblstruct.Text= Common.Get(objsql.GetSingleValue("select count(distinct pregno) from inststruc"));
         lbltoday.Text= Common.Get(objsql.GetSingleValue("SELECT COUNT(*) FROM installments WHERE dated='" + date + "'"));
+        lblreward.Text = Common.Get(objsql.GetSingleValue("SELECT COUNT(*) FROM tblpendingreward WHERE date<='" + date + "'"));
         current = Common.Get(objsql.GetSingleValue("select Month('" + date + "')"));
         year = Common.Get(objsql.GetSingleValue("select year('" + date + "')"));
         

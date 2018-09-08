@@ -57,7 +57,7 @@ public partial class Auth_Payrewards : System.Web.UI.Page
             {
                 level.CssClass = "text-danger";
             }
-            string check = Common.Get(objsql.GetSingleValue("select * from tblpayreward where regno='" + Request.QueryString["id"] + "' and rewads='" + id.Value + "'"));
+            string check = Common.Get(objsql.GetSingleValue("select * from tblpendingreward where regno='" + Request.QueryString["id"] + "' and rewads='" + id.Value + "' and payout='Paid'"));
             if (check == "")
             {
                 pay.Text = "Pay";
@@ -89,7 +89,8 @@ public partial class Auth_Payrewards : System.Web.UI.Page
     protected void lnkpay_Click(object sender, EventArgs e)
     {
         string id = (sender as LinkButton).CommandArgument;
-        objsql.ExecuteNonQuery("insert into tblpayreward(regno,rewads,payout,date) values('" + Request.QueryString["id"] + "','" + id + "','Pay','" + System.DateTime.Now + "')");
+  //      objsql.ExecuteNonQuery("insert into tblpayreward(regno,rewads,payout,date) values('" + Request.QueryString["id"] + "','" + id + "','Pay','" + System.DateTime.Now + "')");
+        objsql.ExecuteNonQuery("update tblpendingreward set payout='Paid' where regno='" + Request.QueryString["id"] + "',rewads='" + id + "'");
         bind(Request.QueryString["id"].ToString());
     }
 
