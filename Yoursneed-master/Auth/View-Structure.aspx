@@ -41,12 +41,13 @@
                     <th>Sr.No</th>
                     <th>Regno</th>
                     <th>AddInst</th>
-                    <th>Product Name</th>
-                    <th>Product Date</th>
+                    
+                   
                      <th>Name</th>
                     <th>joining</th>
                     <th>installments</th>
                     <th>LastPaid</th>
+                    <th>Product Name</th>
                     <th></th>
                 </tr>
             </thead>
@@ -59,13 +60,8 @@
                         <td>
                             <asp:TextBox ID="txtpaid" CssClass="form-control" runat="server"></asp:TextBox>
                         </td>
-                          <td>
-                            <asp:TextBox ID="txtproduct" CssClass="form-control" runat="server" Text='<%#Eval("productname") %>' ></asp:TextBox>
-                        </td>
-                         <td>
-                             <%#Eval("productdate") %>
-                          <%-- <asp:Label ID="lblpdate" runat="server" Text='<%# Convert.ToDateTime(Eval("productdate")).ToString("dd/MM/yyyy") %>'></asp:Label>--%>
-                        </td>
+                          
+                        
                         <td><%#Eval("fname") %></td>
                         <td>
                             <asp:Label ID="lbldate" runat="server" Text='<%# Convert.ToDateTime(Eval("joined")).ToString("dd/MM/yyyy") %>'></asp:Label>
@@ -78,6 +74,9 @@
                         <td>
                             <asp:Label ID="lbllastpaid" runat="server" Text="Label"></asp:Label>
                             
+                        </td>
+                        <td>
+                            <asp:TextBox ID="txtproduct" CssClass="form-control" runat="server" Text='<%#Eval("productname") %>' ></asp:TextBox>
                         </td>
                         <td>
                             <asp:LinkButton ID="lnkdelete" runat="server" CssClass="label label-danger" OnClick="lnkdelete_Click" CommandArgument='<%#Eval("regno") %>'>Delete</asp:LinkButton>
