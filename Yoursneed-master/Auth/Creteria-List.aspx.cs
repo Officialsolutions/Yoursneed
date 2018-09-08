@@ -21,7 +21,8 @@ public partial class Auth_Creteria_List : System.Web.UI.Page
             pNodeL(Request.QueryString["id"].ToString(), "one");
             pNodeR(Request.QueryString["id"].ToString(), "two");
             bindgrid();
-           
+            string mmid = Common.Get(objsql.GetSingleValue("select max(id) from tblPendingreward where regno='" + Request.QueryString["id"] + "' "));
+            lblstatus.Text = Common.Get(objsql.GetSingleValue("select rewads from tblPendingreward where id='" + mmid + "' "));
         }
         else
         {

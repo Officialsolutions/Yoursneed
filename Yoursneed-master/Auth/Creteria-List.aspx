@@ -20,7 +20,7 @@
             <h4><b>
                 <asp:Label ID="lblname" runat="server" Text="Label"></asp:Label><br />
                 <asp:Label ID="lblreg" runat="server" Text="Label"></asp:Label><br />
-                <asp:Label ID="lblstatus" runat="server" Text="Status Level"></asp:Label></b>
+               Status Level: <asp:Label ID="lblstatus" runat="server" Text=""></asp:Label></b>
             </h4>
 
         </div>
