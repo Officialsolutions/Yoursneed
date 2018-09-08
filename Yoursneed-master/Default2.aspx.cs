@@ -12,41 +12,57 @@ using System.Web.UI.WebControls;
 
 public partial class Default2 : System.Web.UI.Page
 {
+    SQLHelper objsql = new SQLHelper();
     string constring = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
     protected void Page_Load(object sender, EventArgs e)
     {
-        string apival = "http://www.sambsms.com/app/smsapi/index.php?key=459EDA8C909B85&campaign=1&routeid=7&type=text&contacts=9814777093&msg=hi&senderid=YOURND";
-        apicall(apival);
+        check();
     }
 
-    protected void Button1_Click(object sender, EventArgs e)
+    protected void check()
     {
-        using (SqlConnection con = new SqlConnection(constring))
+        DataTable dt = new DataTable();
+        dt = objsql.GetTable("select * from usersnew");
+        if (dt.Rows.Count > 0)
         {
-
-            using (SqlCommand cmd = new SqlCommand("VAL_DOWNLINE", con))
+            foreach (DataRow dr in dt.Rows)
             {
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@PID", 1053);           // sponser id
-                cmd.Parameters.AddWithValue("@ID", 1054);                            // node
-                cmd.Parameters.Add("@Down", SqlDbType.VarChar, 30);
-                cmd.Parameters["@Down"].Direction = ParameterDirection.Output;
-                con.Open();
-                cmd.ExecuteNonQuery();
-                con.Close();
-                string a = cmd.Parameters["@Down"].Value.ToString();
 
+                DataTable dt2 = new DataTable();
+                dt2 = objsql.GetTable("select * from legs where regno='" + dr["regno"] + "'");
+                if (dt2.Rows.Count > 0)
+                {
+                    int left = Convert.ToInt32(dt2.Rows[0]["leftleg"]);
+                    int right = Convert.ToInt32(dt2.Rows[0]["rightleg"]);
+
+                    if (left <= right)
+                    {
+                        DataTable dt3 = new DataTable();
+                        dt3 = objsql.GetTable("select * from tblrewards where pins<=" + left + "");
+                        foreach (DataRow dd in dt3.Rows)
+                        {
+                            string test = Common.Get(objsql.GetSingleValue("select rewads from tblpendingreward where rewads='" + dd["id"] + "' and regno='" + dr["regno"] + "' "));
+                            if (test == "")
+                            {
+                                objsql.ExecuteNonQuery("insert into tblPendingreward(regno,rewads,payout,date) values('" + dr["regno"] + "','" + dd["id"] + "','Pending','" + System.DateTime.Now + "')");
+                            }
+                        }
+                    }
+                    else
+                    {
+                        DataTable dt3 = new DataTable();
+                        dt3 = objsql.GetTable("select * from tblrewards where pins<=" + right + "");
+                        foreach (DataRow dd in dt3.Rows)
+                        {
+                            string test = Common.Get(objsql.GetSingleValue("select rewads from tblpendingreward where rewads='" + dd["id"] + "' and regno='" + dr["regno"] + "' "));
+                            if (test == "")
+                            {
+                                objsql.ExecuteNonQuery("insert into tblPendingreward(regno,rewads,payout,date) values('" + dr["regno"] + "','" + dd["id"] + "','Pending','" + System.DateTime.Now + "')");
+                            }
+                        }
+                    }
+                }
             }
-
         }
-    }
-    public string apicall(string url)
-    {
-        HttpWebRequest httpreq = (HttpWebRequest)WebRequest.Create(url);
-        HttpWebResponse httpres = (HttpWebResponse)httpreq.GetResponse();
-        StreamReader sr = new StreamReader(httpres.GetResponseStream());
-        string results = sr.ReadToEnd();
-        sr.Close();
-        return results;
     }
 }

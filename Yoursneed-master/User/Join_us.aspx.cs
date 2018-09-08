@@ -212,8 +212,8 @@ public partial class User_Join_us : System.Web.UI.Page
                         // objsql.SendSMS("", "", txtphn.Text, msz);
                         apicall(apival);
                     }
-                    
-               
+
+                check();
                 ts.Complete();
                 ts.Dispose();
                 details();
@@ -272,5 +272,51 @@ public partial class User_Join_us : System.Web.UI.Page
         apicall(apival);
        // return total;
     
+    }
+    protected void check()
+    {
+        DataTable dt = new DataTable();
+        dt = objsql.GetTable("select * from usersnew");
+        if (dt.Rows.Count > 0)
+        {
+            foreach (DataRow dr in dt.Rows)
+            {
+
+                DataTable dt2 = new DataTable();
+                dt2 = objsql.GetTable("select * from legs where regno='" + dr["regno"] + "'");
+                if (dt2.Rows.Count > 0)
+                {
+                    int left = Convert.ToInt32(dt2.Rows[0]["leftleg"]);
+                    int right = Convert.ToInt32(dt2.Rows[0]["rightleg"]);
+
+                    if (left <= right)
+                    {
+                        DataTable dt3 = new DataTable();
+                        dt3 = objsql.GetTable("select * from tblrewards where pins<=" + left + "");
+                        foreach (DataRow dd in dt3.Rows)
+                        {
+                            string test = Common.Get(objsql.GetSingleValue("select rewads from tblpendingreward where rewads='" + dd["id"] + "' and regno='" + dr["regno"] + "' "));
+                            if (test == "")
+                            {
+                                objsql.ExecuteNonQuery("insert into tblPendingreward(regno,rewads,payout,date) values('" + dr["regno"] + "','" + dd["id"] + "','Pending','" + System.DateTime.Now + "')");
+                            }
+                        }
+                    }
+                    else
+                    {
+                        DataTable dt3 = new DataTable();
+                        dt3 = objsql.GetTable("select * from tblrewards where pins<=" + right + "");
+                        foreach (DataRow dd in dt3.Rows)
+                        {
+                            string test = Common.Get(objsql.GetSingleValue("select rewads from tblpendingreward where rewads='" + dd["id"] + "' and regno='" + dr["regno"] + "' "));
+                            if (test == "")
+                            {
+                                objsql.ExecuteNonQuery("insert into tblPendingreward(regno,rewads,payout,date) values('" + dr["regno"] + "','" + dd["id"] + "','Pending','" + System.DateTime.Now + "')");
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
 }

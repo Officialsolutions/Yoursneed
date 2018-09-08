@@ -23,7 +23,7 @@
                 <ItemTemplate>
                     <tr>
                         <td><%# Container.DataItemIndex+1 %></td>
-                        <td><%#Eval("cregno") %></td>
+                        <td><%#Eval("pregno") %></td>
                         <td><%#Eval("fname") %></td>
                         <td><%#Eval("mobile") %></td>
                         <td><asp:Label ID="lbldate" runat="server" Text='<%# Convert.ToDateTime(Eval("joined")).ToString("dd/MM/yyyy") %>'></asp:Label></td>

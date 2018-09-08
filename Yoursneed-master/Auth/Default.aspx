@@ -50,11 +50,9 @@
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="cpmain" runat="Server">
     <div class="col-md-12" style="margin-bottom: 20px;color: black;">
-        <div class="col-lg-3 col-sm-4 bottom-m3 Dash green">
+        <%--<div class="col-lg-3 col-sm-4 bottom-m3 Dash green">
             <div class="contact-box">
-              <%--  <div class="contact-icon">
-                    <i class="fa fa-inr"></i>
-                </div>--%>
+              
                 <div class="contact-info" >
                     
                       <span >
@@ -65,7 +63,7 @@
                     <a href="LastJoining.aspx" >Click All View</a>
                 </div>
             </div>
-        </div>
+        </div>--%>
         <div class="col-lg-3 col-sm-4 bottom-m3 Dash green">
             <div class="contact-box">
             
@@ -90,7 +88,7 @@
                 </div>
             </div>
         </div>--%>
-        <div class="col-lg-3 col-sm-4 bottom-m3 Dash green">
+     <%--   <div class="col-lg-3 col-sm-4 bottom-m3 Dash green">
             <div class="contact-box">
             
                 <div class="contact-info">
@@ -112,9 +110,7 @@
         </div>
         <div class="col-lg-3 col-sm-4 bottom-m3 Dash green">
             <div class="contact-box">
-     <%--           <div class="contact-icon">
-                    <i class="fa fa-unlock"></i>
-                </div>--%>
+    
                 <div class="contact-info">
                      <span >
                           [ <asp:Label ID="lblused" runat="server" Text=""></asp:Label>]</span>
@@ -125,9 +121,7 @@
         </div>
         <div class="col-lg-3 col-sm-4 bottom-m3 Dash green">
             <div class="contact-box">
-               <%-- <div class="contact-icon">
-                    <i class="fa fa-lock"></i>
-                </div>--%>
+               
                 <div class="contact-info">
                       <span >
                           [ <asp:Label ID="lblunused" runat="server" Text=""></asp:Label> ]</span>
@@ -138,9 +132,7 @@
         </div>
         <div class="col-lg-3 col-sm-4 bottom-m3 Dash green">
             <div class="contact-box">
-              <%--  <div class="contact-icon">
-                    <i class="fa fa-check-square"></i>
-                </div>--%>
+              
                 <div class="contact-info">
                        <span>[ <asp:Label ID="lblinstall" runat="server" Text=""></asp:Label>  ]</span>
                    <h3>Today's Installments </h3>
@@ -150,23 +142,19 @@
         </div>
         <div class="col-lg-3 col-sm-4 bottom-m3 Dash green">
             <div class="contact-box">
-                <%--<div class="contact-icon">
-                    <i class="fa fa-bank"></i>
-                </div>--%>
+               
                 <div class="contact-info">
                      <span >[ <asp:Label ID="lblmonth" runat="server" Text=""></asp:Label> ]</span>
                        <h3> <%=monthname %> Installments  </h3>
                         <a href="ViewInstallments.aspx" >Click All View</a>
                 </div>
             </div>
-        </div>
+        </div>--%>
         <div class="col-lg-3 col-sm-4 bottom-m3 Dash green">
             <div class="contact-box">
-                <%--<div class="contact-icon">
-                    <i class="fa fa-bell"></i>
-                </div>--%>
+               
                 <div class="contact-info">
-                     <span >[ <%--  <asp:Label ID="lblreward" runat="server" Text=""></asp:Label>--%>  ]</span>
+                     <span >[   <asp:Label ID="lblreward" runat="server" Text=""></asp:Label>  ]</span>
                     <h3>Reward Alert</h3>
                         <a href="Achiever.aspx" >Click All View</a>
                 </div>
@@ -174,9 +162,7 @@
         </div>
           <div class="col-lg-3 col-sm-4 bottom-m3 Dash green">
             <div class="contact-box">
-                <%--<div class="contact-icon">
-                    <i class="fa fa-link"></i>
-                </div>--%>
+                
                 <div class="contact-info">
                      <span >[ <asp:Label ID="lblstruct" runat="server" Text=""></asp:Label> ]</span>
                      <h3>Total Structure </h3>
