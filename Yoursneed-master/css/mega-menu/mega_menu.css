@@ -168,7 +168,7 @@
   }
 }
 .mega-menu .menu-links > li {
-  margin: 0;
+  margin: -5px;
   padding: 0;
   display: block;
   float: left;
@@ -206,7 +206,7 @@
 }
 .mega-menu .menu-links > li > a {
   margin: 0;
-  padding: 0 13px;
+  padding: 0 14px;
   display: inline-block;
   float: none;
   width: 100%;

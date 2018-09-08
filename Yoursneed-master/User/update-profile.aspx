@@ -14,7 +14,7 @@
             <tr>
                 <td>Sponser Id:</td>
                 <td>
-                    <asp:Label ID="lblspon" runat="server" Text=""></asp:Label></td>
+                    <asp:TextBox ID="lblspon" runat="server"></asp:TextBox></td>
                 <td>&nbsp;</td>
                 <td>&nbsp;</td>
             </tr>
@@ -39,7 +39,7 @@
             <tr>
                 <td>Address</td>
                 <td>
-                    <asp:TextBox ID="lblads" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="lblads" runat="server" TextMode="MultiLine"></asp:TextBox>
                     <%--<asp:Label ID="lblads" runat="server" Text=""></asp:Label>--%></td>
                 <td></td>
                 <td>&nbsp;</td>
@@ -67,10 +67,10 @@
             <tr>
                 <td>Phone(Office)</td>
                 <td>
-                    <asp:Label ID="lblphone" runat="server" Text=""></asp:Label></td>
+                    <asp:TextBox ID="lblphone" runat="server"></asp:TextBox>  </td>
                 <td>Phone(Resi)</td>
                 <td>
-                    <asp:Label ID="lblphpone2" runat="server" Text=""></asp:Label></td>
+                      <asp:TextBox ID="lblphpone2" runat="server"></asp:TextBox></td>
             </tr>
             <tr>
                 <td>Mobile</td>
@@ -86,10 +86,10 @@
             <tr>
                 <td>Bank Account</td>
                 <td>
-                    <asp:Label ID="lblbankac" runat="server" Text=""></asp:Label></td>
+                    <asp:TextBox ID="lblbankac" runat="server"></asp:TextBox></td>
                 <td>Bank Name</td>
                 <td>
-                    <asp:Label ID="lblbank" runat="server" Text=""></asp:Label></td>
+                    <asp:TextBox ID="lblbank" runat="server"></asp:TextBox></td>
             </tr>
             <tr>
                 <td>Nominee</td>
@@ -104,11 +104,10 @@
             <tr>
                 <td>Nomiee Address</td>
                 <td>
-                  
-                    <asp:Label ID="lblnomads" runat="server" Text=""></asp:Label></td>
+                    <asp:TextBox ID="lblnomads" runat="server"></asp:TextBox></td>
                 <td>Nominee Phone</td>
                 <td>
-                    <asp:Label ID="lblnomieephone" runat="server" Text=""></asp:Label></td>
+                    <asp:TextBox ID="lblnomieephone" runat="server"></asp:TextBox></td>
             </tr>
             <tr>
                 <td>

@@ -22,10 +22,20 @@ public partial class User_installments : System.Web.UI.Page
             else
             {
                 user = Request.QueryString["id"].ToString();
+              
+            }
+            if (Convert.ToInt32(user) < 3200)
+            {
+                lbltotal.Text = "16";
+            }
+            else
+            {
+                lbltotal.Text = "12";
             }
             bind(user);
             count(user);
         }
+
     }
     protected void bind(string id)
     {

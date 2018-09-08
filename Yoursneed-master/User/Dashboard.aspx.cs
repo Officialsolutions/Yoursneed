@@ -44,9 +44,9 @@ public partial class User_Dashboard : System.Web.UI.Page
     {
         int sponser = 0, stotal = 0;
         string tds, net;
-        lblnew.Text = Common.Get(objsql.GetSingleValue("select count(*) from pins where regno='" + Session["user"] + "' and status='n'"));
-        lblused.Text = Common.Get(objsql.GetSingleValue("select count(*) from pins where regno='" + Session["user"] + "' and status='y'"));
-        lbltrans.Text = Common.Get(objsql.GetSingleValue("select count(*) from pintransfers where oldregno='" + Session["user"] + "' "));
+        //lblnew.Text = Common.Get(objsql.GetSingleValue("select count(*) from pins where regno='" + Session["user"] + "' and status='n'"));
+        //lblused.Text = Common.Get(objsql.GetSingleValue("select count(*) from pins where regno='" + Session["user"] + "' and status='y'"));
+        //lbltrans.Text = Common.Get(objsql.GetSingleValue("select count(*) from pintransfers where oldregno='" + Session["user"] + "' "));
         lblins.Text = Common.Get(objsql.GetSingleValue("select count(*) from installments where regno='" + Session["user"] + "' "));
 
         sponser = int.Parse(Common.Get(objsql.GetSingleValue("select count(*) from usersnew where spillsregno='" + Session["user"] + "' and joined>'2018-07-17 00:00:00'")));
@@ -70,7 +70,14 @@ public partial class User_Dashboard : System.Web.UI.Page
             rightdr.Text = dtg.Rows[0]["rightdirect"].ToString();
             teaml.Text = dtg.Rows[0]["leftleg"].ToString();
             teamr.Text = dtg.Rows[0]["rightleg"].ToString();
-
+            if(Convert.ToInt32(teaml.Text) >= Convert.ToInt32(teamr.Text))
+            {
+                lblpair.Text = teamr.Text;
+            }
+            if (Convert.ToInt32(teaml.Text) <= Convert.ToInt32(teamr.Text))
+            {
+                lblpair.Text = teaml.Text;
+            }
         }
     }
     //protected void ActiveR(string id)

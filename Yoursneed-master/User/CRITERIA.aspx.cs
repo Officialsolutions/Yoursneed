@@ -21,7 +21,8 @@ public partial class User_CRITERIA : System.Web.UI.Page
             pNodeL(Session["user"].ToString(), "one");
             pNodeR(Session["user"].ToString(), "two");
             bindgrid();
-
+            string mmid = Common.Get(objsql.GetSingleValue("select max(id) from tblPendingreward where regno='" + Session["user"] + "' "));
+            lblstatus.Text = Common.Get(objsql.GetSingleValue("select rewads from tblPendingreward where id='" + mmid + "' "));
         }
         else
         {

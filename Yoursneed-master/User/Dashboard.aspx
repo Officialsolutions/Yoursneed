@@ -40,8 +40,27 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="cpmain" runat="Server">
+    <div class="col-md-12">
+        <div class="col-md-6">
+            Welcome <%=name %>
+        </div>
+        <div class="col-md-2 col-md-offset-1">
+            ID <%=regno %>
+        </div>
+    </div>
+
+    <div class="col-md-12">
+        <div class="col-md-10">
+            <div class="alert alert-success" role="alert">
+                Two Direct Compulsary Id's (One Left and On Right)
+   
+            </div>
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+
     <div class="col-md-12" style="margin-bottom: 20px; align-items: center; color: black;">
-        <div class="col-lg-3 col-sm-3 bottom-m3 Dash blue">
+        <%-- <div class="col-lg-3 col-sm-3 bottom-m3 Dash blue">
             <div class="contact-box">
                 <div class="contact-icon">
                     <span class="fa fa-unlink"></span>
@@ -77,7 +96,7 @@
                         <asp:Label ID="lbltrans" runat="server" Text=""></asp:Label></h6>
                 </div>
             </div>
-        </div>
+        </div>--%>
         <div class="col-lg-3 col-sm-3 bottom-m3 Dash green">
             <div class="contact-box">
                 <div class="contact-icon">
@@ -108,7 +127,19 @@
                 </div>
             </div>
         </div>
-       <%-- <div class="col-lg-3 col-sm-3 bottom-m3 Dash pink">
+          <div class="col-lg-3 col-sm-3 bottom-m3 Dash blue">
+            <div class="contact-box">
+                <div class="contact-icon">
+                    <span class="fa fa-user"></span>
+                </div>
+                <div class="contact-info">
+                    <h5>Pair</h5>
+                    <h6><asp:Label ID="lblpair" runat="server" Text=""></asp:Label></h6>
+
+                </div>
+            </div>
+        </div>
+        <%-- <div class="col-lg-3 col-sm-3 bottom-m3 Dash pink">
             <div class="contact-box">
                 <div class="contact-icon">
                     <span class="fa fa-user"></span>
@@ -162,19 +193,8 @@
             </div>
         </div>
     </div>
-    <div class="col-md-12">
-        <div class="col-md-10">
-            <div class="alert alert-success" role="alert">
-                Two Direct Compulsary Id's (One Left and On Right)
-   
-            </div>
-        </div>
-        <div class="col-md-2"></div>
-    </div>
-    <div class="col-md-12">
-        Welcome <%=name %>
-    </div>
-    <div class="col-md-6 col-md-offset-3">
+
+    <div class="col-md-8 col-md-offset-1">
         <table style="width: 100%;" class="table table-bordered">
             <tr>
                 <td colspan="2">

@@ -11,7 +11,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="cpmain" Runat="Server">
      <div class="col-md-12 count">
         <div class="col-md-4">
-            <strong>Total Installments</strong> : <asp:Label ID="lbltotal" runat="server" Text="16" CssClass="btn btn-primary "></asp:Label>
+            <strong>Total Installments</strong> : <asp:Label ID="lbltotal" runat="server" Text="" CssClass="btn btn-primary "></asp:Label>
         </div>
         <div class="col-md-4">
             <strong>Paid Installments</strong> : <asp:Label ID="lblpaid" runat="server" Text="0" CssClass="btn btn-success"></asp:Label>
