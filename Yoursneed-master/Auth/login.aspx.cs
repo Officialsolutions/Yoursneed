@@ -32,7 +32,7 @@ public partial class Auth_login : System.Web.UI.Page
             {
                 
                     Session["Admin"] = dta.Rows[0]["uname"].ToString();
-                    Response.Redirect("~/Auth/Default.aspx?id=" + Session["Admin"]);
+                    Response.Redirect("~/Auth/Welcome.aspx?id=" + Session["Admin"]);
                 
 
                

@@ -16,8 +16,17 @@ public partial class Auth_ViewInstallments : System.Web.UI.Page
         {
             if (Request.QueryString["id"] != null)
             {
+                if (Convert.ToInt32(Request.QueryString["id"]) < 3200)
+                {
+                    lbltotal.Text = "16";
+                }
+                else
+                {
+                    lbltotal.Text = "12";
+                }
                 bind(Request.QueryString["id"]);
                 count(Request.QueryString["id"]);
+
             }
         }
 
@@ -25,16 +34,26 @@ public partial class Auth_ViewInstallments : System.Web.UI.Page
 
     protected void btnsubmit_Click(object sender, EventArgs e)
     {
-        
-            bind(txtregid.Text);
-            count(txtregid.Text);
-            lblname.Text= Common.Get(objsql.GetSingleValue("select fname from usersnew where regno='" + txtregid.Text + "'"));
-            lblmobile.Text= Common.Get(objsql.GetSingleValue("select mobile from usersnew where regno='" + txtregid.Text + "'"));
+        if (Convert.ToInt32(txtregid.Text) < 3200)
+        {
+            lbltotal.Text = "16";
+        }
+        else
+        {
+            lbltotal.Text = "12";
+        }
+        bind(txtregid.Text);
+        count(txtregid.Text);
+        lblname.Text = Common.Get(objsql.GetSingleValue("select fname from usersnew where regno='" + txtregid.Text + "'"));
+        lblmobile.Text = Common.Get(objsql.GetSingleValue("select mobile from usersnew where regno='" + txtregid.Text + "'"));
 
 
     }
     protected void bind(string id)
     {
+        txtregid.Text = id;
+        lblname.Text = Common.Get(objsql.GetSingleValue("select fname from usersnew where regno='" + id + "'"));
+        lblmobile.Text = Common.Get(objsql.GetSingleValue("select mobile from usersnew where regno='" + id + "'"));
         dt = objsql.GetTable("select * from installments where regno='" + id + "' order by dated ");
         if (dt.Rows.Count > 0)
         {
@@ -57,7 +76,7 @@ public partial class Auth_ViewInstallments : System.Web.UI.Page
             lblpaid.Text = Common.Get(objsql.GetSingleValue("select count(*) from installments where regno = '" + id + "'"));
             lblpending.Text = (Convert.ToInt32(lbltotal.Text) - Convert.ToInt32(lblpaid.Text)).ToString();
         }
-        
+
     }
 
     protected void delete_Click(object sender, EventArgs e)
@@ -73,6 +92,73 @@ public partial class Auth_ViewInstallments : System.Web.UI.Page
             bind(txtregid.Text);
 
         }
-        
+
+    }
+    //protected void lnkedit_Click(object sender, EventArgs e)
+    //{
+    //    string id = (sender as LinkButton).CommandArgument;
+    //    //objsql.ExecuteNonQuery("update installments set dated='"+ +"' where serial='" + id + "'");
+    //    //if (Request.QueryString["id"] != null)
+    //    //{
+    //    //    bind(Request.QueryString["id"]);
+    //    //}
+    //    //else
+    //    //{
+    //    //    bind(txtregid.Text);
+
+    //    //}
+    //}
+
+    //protected void lnkupdate_Click(object sender, EventArgs e)
+    //{
+
+    //}
+
+    protected void gvpins_RowUpdating(object sender, GridViewUpdateEventArgs e)
+    {
+        Label id = gvpins.Rows[e.RowIndex].FindControl("lblid") as Label;
+
+        TextBox txtdate = this.gvpins.Rows[e.RowIndex].FindControl("txtdate") as TextBox;
+        string date = txtdate.Text;
+      //  DateTime dat = DateTime.ParseExact(date, ("yyyy-MM-dd"), null);
+        objsql.ExecuteNonQuery("Update installments set dated='" + Convert.ToDateTime(date).ToString("yyyy-MM-dd") + "' where serial='" + id.Text + "'");
+        gvpins.EditIndex = -1;
+        if (Request.QueryString["id"] != null)
+        {
+            bind(Request.QueryString["id"]);
+        }
+        else
+        {
+            bind(txtregid.Text);
+
+        }
+    }
+
+    protected void gvpins_RowEditing(object sender, GridViewEditEventArgs e)
+    {
+        gvpins.EditIndex = e.NewEditIndex;
+        if (Request.QueryString["id"] != null)
+        {
+            bind(Request.QueryString["id"]);
+        }
+        else
+        {
+            bind(txtregid.Text);
+
+        }
+    }
+
+    protected void gvpins_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
+    {
+        gvpins.EditIndex = -1;
+        if (Request.QueryString["id"] != null)
+        {
+            bind(Request.QueryString["id"]);
+        }
+        else
+        {
+            bind(txtregid.Text);
+
+        }
     }
 }

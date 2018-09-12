@@ -26,4 +26,11 @@ public partial class Auth_clientstructure : System.Web.UI.Page
             gvpins.DataBind();
         }
     }
+
+    protected void View_Click(object sender, EventArgs e)
+    {
+        string id = (sender as LinkButton).CommandArgument;
+        Response.Redirect("Detailedstruct.aspx?id=" + id);
+    
+    }
 }

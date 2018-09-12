@@ -35,7 +35,7 @@
     <!-- Style customizer -->
     <link rel="stylesheet" href="#" data-style="styles">
     <link rel="stylesheet" type="text/css" href="css/style-customizer.css" />
- <%--   <style>
+    <%--   <style>
         #mask {
             position: absolute;
             left: 0;
@@ -122,7 +122,7 @@
                                     <li>
                                         <asp:LinkButton ID="lnklogin" runat="server">Login</asp:LinkButton>
                                         <asp:LinkButton ID="lnklogout" runat="server" Visible="false">Logout</asp:LinkButton>
-                                       <%-- <a href="Login.aspx">Login </a>--%>
+                                        <%-- <a href="Login.aspx">Login </a>--%>
 
                                     </li>
                                 </ul>
@@ -132,9 +132,7 @@
                 </div>
             </div>
 
-            <!--=================================
-    mega menu -->
-
+            <!--=================================  mega menu -->
             <div class="menu">
                 <!-- menu start -->
                 <nav id="menu" class="mega-menu">
@@ -147,7 +145,8 @@
                                     <ul class="menu-logo">
                                         <li>
                                             <a href="Default.aspx">
-                                                <img id="logo_img" src="images/logo-dark.png" alt="logo">
+                                                <img id="logo_img" src="images/logo.jpg" alt="logo" class="img-responsive" />
+                                                <%-- <img id="logo_img" src="images/logo.png" alt="logo">--%>
                                             </a>
                                         </li>
                                     </ul>
@@ -402,7 +401,7 @@ back to top -->
         <asp:ContentPlaceHolder ID="cpfooter" runat="server"></asp:ContentPlaceHolder>
 
     </form>
-<%--    <script>
+    <%--    <script>
         $(document).ready(function () {
             var id = '#dialog';
             var maskHeight = $(document).height();

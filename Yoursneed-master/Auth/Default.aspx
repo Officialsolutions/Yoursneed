@@ -50,7 +50,7 @@
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="cpmain" runat="Server">
     <div class="col-md-12" style="margin-bottom: 20px;color: black;">
-        <%--<div class="col-lg-3 col-sm-4 bottom-m3 Dash green">
+        <div class="col-lg-3 col-sm-4 bottom-m3 Dash green">
             <div class="contact-box">
               
                 <div class="contact-info" >
@@ -63,7 +63,7 @@
                     <a href="LastJoining.aspx" >Click All View</a>
                 </div>
             </div>
-        </div>--%>
+        </div>
         <div class="col-lg-3 col-sm-4 bottom-m3 Dash green">
             <div class="contact-box">
             
@@ -87,8 +87,8 @@
                             <asp:Label ID="lbltotal" runat="server" Text=""></asp:Label></span></h4>
                 </div>
             </div>
-        </div>--%>
-     <%--   <div class="col-lg-3 col-sm-4 bottom-m3 Dash green">
+        </div>
+        <div class="col-lg-3 col-sm-4 bottom-m3 Dash green">
             <div class="contact-box">
             
                 <div class="contact-info">
@@ -129,7 +129,7 @@
                        <a href="unusedpinstatus.aspx" >Click All View</a>
                 </div>
             </div>
-        </div>
+        </div>--%>
         <div class="col-lg-3 col-sm-4 bottom-m3 Dash green">
             <div class="contact-box">
               
@@ -149,14 +149,14 @@
                         <a href="ViewInstallments.aspx" >Click All View</a>
                 </div>
             </div>
-        </div>--%>
+        </div>
         <div class="col-lg-3 col-sm-4 bottom-m3 Dash green">
             <div class="contact-box">
                
                 <div class="contact-info">
                      <span >[   <asp:Label ID="lblreward" runat="server" Text=""></asp:Label>  ]</span>
                     <h3>Reward Alert</h3>
-                        <a href="Achiever.aspx" >Click All View</a>
+                        <a href="reward-achiever.aspx" >Click All View</a>
                 </div>
             </div>
         </div>

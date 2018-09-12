@@ -32,23 +32,21 @@
                        Text="Save" onclick="btnsave_Click" Enabled="false"/>
         </div>
     </div>
-     <div class="col-md-12">
+     <div class="col-md-12 col-sm-12">
 
 
-         <table id="table1" class="table table-striped table-hover table-fw-widget">
+         <table id="table1" class="table table-striped table-hover table-fw-widget table-responsive">
                     <thead>
                 <tr>
                     <th>Sr.No</th>
                     <th>Regno</th>
                     <th>AddInst</th>
-                    
-                   
                      <th>Name</th>
                     <th>joining</th>
                     <th>installments</th>
                     <th>LastPaid</th>
                     <th>Product Name</th>
-                    <th></th>
+                    <th>Action</th>
                 </tr>
             </thead>
             <asp:ListView ID="gvpins" runat="server" OnItemDataBound="gvpins_ItemDataBound" OnItemCommand="gvpins_ItemCommand" EnableViewState="true">
@@ -58,7 +56,7 @@
 
                         <td><%#Eval("regno") %></td>
                         <td>
-                            <asp:TextBox ID="txtpaid" CssClass="form-control" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="txtpaid" CssClass="form-control" runat="server" Width="60px"></asp:TextBox>
                         </td>
                           
                         

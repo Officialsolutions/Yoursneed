@@ -27,14 +27,14 @@ public partial class Auth_Default : System.Web.UI.Page
         INDIAN_ZONE = TimeZoneInfo.FindSystemTimeZoneById("India Standard Time");
         DateTime indianTime = TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow, INDIAN_ZONE);
         date = indianTime.ToString("yyyy-MM-dd");
-        //lbltoday.Text = Common.Get(objsql.GetSingleValue("select count(*) from usersnew where joined='" + date + "'"));
+        lbltoday.Text = Common.Get(objsql.GetSingleValue("select count(*) from usersnew where joined='" + date + "'"));
         lbltotal.Text = Common.Get(objsql.GetSingleValue("select count(*) from usersnew "));
         //lblblock.Text= Common.Get(objsql.GetSingleValue("select count(*) from usersnew where active='0'"));
         //lblunblock.Text= Common.Get(objsql.GetSingleValue("select count(*) from usersnew where active='1'"));
         //lblused.Text= Common.Get(objsql.GetSingleValue("select count(*) from pins where status='y'"));
         //lblunused.Text= Common.Get(objsql.GetSingleValue("select count(*) from pins where status='n'"));
         lblstruct.Text= Common.Get(objsql.GetSingleValue("select count(distinct pregno) from inststruc"));
-        //lbltoday.Text= Common.Get(objsql.GetSingleValue("SELECT COUNT(*) FROM installments WHERE dated='" + date + "'"));
+        lbltoday.Text = Common.Get(objsql.GetSingleValue("SELECT COUNT(*) FROM installments WHERE dated='" + date + "'"));
         lblreward.Text = Common.Get(objsql.GetSingleValue("SELECT COUNT(*) FROM tblpendingreward WHERE date<='" + date + "'"));
         current = Common.Get(objsql.GetSingleValue("select Month('" + date + "')"));
         year = Common.Get(objsql.GetSingleValue("select year('" + date + "')"));
@@ -116,7 +116,7 @@ public partial class Auth_Default : System.Web.UI.Page
         string startdate = (year +"-"+ current +"-1");
         string enddate = (year + "-" + current + "-"+days);
 
-        // lblmonth.Text= Common.Get(objsql.GetSingleValue("SELECT COUNT(*) FROM installments WHERE dated BETWEEN '"+ startdate + "' AND '"+ enddate + "'"));
+        lblmonth.Text = Common.Get(objsql.GetSingleValue("SELECT COUNT(*) FROM installments WHERE dated BETWEEN '" + startdate + "' AND '" + enddate + "'"));
 
         //using (SqlConnection con = new SqlConnection(constring))
         //{

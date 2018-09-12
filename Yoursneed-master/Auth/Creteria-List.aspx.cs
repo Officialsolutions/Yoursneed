@@ -16,19 +16,19 @@ public partial class Auth_Creteria_List : System.Web.UI.Page
     SQLHelper objsql = new SQLHelper();
     protected void Page_Load(object sender, EventArgs e)
     {
-        if (Request.QueryString["id"] != null)
-        {
-            pNodeL(Request.QueryString["id"].ToString(), "one");
-            pNodeR(Request.QueryString["id"].ToString(), "two");
-            bindgrid();
-            string mmid = Common.Get(objsql.GetSingleValue("select max(id) from tblPendingreward where regno='" + Request.QueryString["id"] + "' "));
-            lblstatus.Text = Common.Get(objsql.GetSingleValue("select rewads from tblPendingreward where id='" + mmid + "' "));
-        }
-        else
-        {
-            Response.Redirect("~/login.aspx");
-        }
-        
+        //if (Request.QueryString["id"] != null)
+        //{
+        //pNodeL(Request.QueryString["id"].ToString(), "one");
+        //pNodeR(Request.QueryString["id"].ToString(), "two");
+        //bindgrid();
+        //string mmid = Common.Get(objsql.GetSingleValue("select max(id) from tblPendingreward where regno='" + Request.QueryString["id"] + "' "));
+        //lblstatus.Text = Common.Get(objsql.GetSingleValue("select rewads from tblPendingreward where id='" + mmid + "' "));
+        //}
+        //else
+        //{
+        //    Response.Redirect("~/login.aspx");
+        //}
+
 
     }
     protected string lastnode(string sponser, string node)
@@ -365,7 +365,7 @@ public partial class Auth_Creteria_List : System.Web.UI.Page
     public void bindgrid()
     {
         DataTable dtg = new DataTable();
-        dtg = objsql.GetTable("select l.regno,l.leftdirect,l.leftleg,l.rightleg,l.rightdirect,u.fname from legs l Inner Join usersnew u on l.regno=u.regno and l.regno='" + Request.QueryString["id"].ToString() + "'");
+        dtg = objsql.GetTable("select l.regno,l.leftdirect,l.leftleg,l.rightleg,l.rightdirect,u.fname from legs l Inner Join usersnew u on l.regno=u.regno and l.regno='" + txtregid.Text + "'");
         if (dtg.Rows.Count > 0)
         {
             lblname.Text = dtg.Rows[0]["fname"].ToString();
@@ -375,5 +375,44 @@ public partial class Auth_Creteria_List : System.Web.UI.Page
             teaml.Text = dtg.Rows[0]["leftleg"].ToString();
             teamr.Text = dtg.Rows[0]["rightleg"].ToString();
         }
+    }
+    protected void btnsubmit_Click(object sender, EventArgs e)
+    {
+        string check = bind();
+        if (check != null)
+        {
+            pNodeL(txtregid.Text, "one");
+            pNodeR(txtregid.Text, "two");
+            bindgrid();
+            string mmid = Common.Get(objsql.GetSingleValue("select max(id) from tblPendingreward where regno='" + txtregid.Text + "' "));
+            lblstatus.Text = Common.Get(objsql.GetSingleValue("select rewads from tblPendingreward where id='" + mmid + "' "));
+            //  Response.Redirect("creteria-list.aspx?id=" + txtregid.Text);
+        }
+        else
+        {
+            lblname.Text = "No Data Found";
+        }
+    }
+
+    protected void txtregid_TextChanged(object sender, EventArgs e)
+    {
+        lblname.Text = bind();
+
+    }
+    protected string bind()
+    {
+        lblname.Text = Common.Get(objsql.GetSingleValue("select fname from usersnew where regno='" + txtregid.Text + "'"));
+        if (lblname.Text == "")
+        {
+            lblname.Text = "No Data Found";
+            btnsubmit.Enabled = false;
+        }
+        else
+        {
+
+            return lblname.Text;
+            btnsubmit.Enabled = true;
+        }
+        return "";
     }
 }

@@ -153,7 +153,8 @@
                                     <ul class="menu-logo">
                                         <li>
                                             <a href="Default.aspx">
-                                                <img id="logo_img" src="images/logo-dark.png" alt="logo">
+                                                <img id="logo_img" src="images/logo.jpg" alt="logo" class="img-responsive" />
+                                                <%--   <img id="logo_img" src="images/logo-dark.png" alt="logo">--%>
                                             </a>
                                         </li>
                                     </ul>

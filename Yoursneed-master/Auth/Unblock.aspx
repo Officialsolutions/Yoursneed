@@ -6,6 +6,20 @@
    UnBlock Id
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="cpmain" Runat="Server">
+         <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+            <ContentTemplate>
+    <div class="form-group">
+               <label> Enter Registration Id. </label>
+               <asp:TextBox ID="txtregid" AutoPostBack="true" OnTextChanged="txtregid_TextChanged" runat="server" class="form-control" ></asp:TextBox>
+               <asp:Label ID="lblname" runat="server" Text=""></asp:Label>
+               
+          </div>
+                </ContentTemplate>
+         </asp:UpdatePanel>
+        <div class="form-group">
+                   <asp:Button CssClass="btn-success btn" ID="btnsubmit" runat="server" 
+                       Text="Submit" onclick="btnsubmit_Click" />
+        </div>
    <div class="col-md-12">
       <h4 style="margin-bottom: 20px;">Pins Received</h4>
   
@@ -26,7 +40,7 @@
                 <tr>
                    <td><%# Container.DataItemIndex+1 %></td>
                     <td><%#Eval("regno") %></td>
-                    <td> <%#Eval("lname") %></td>
+                    <td> <%#Eval("fname") %></td>
                     <td><%#Eval("sregno") %></td>
                     <td><%#Eval("add1") %></td>
                      <td>
